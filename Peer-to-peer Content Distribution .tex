@@ -11,16 +11,6 @@
 \newcommand{\FC} {Freechains\xspace}
 \newcommand{\PtoP} {\emph{peer-to-peer}\xspace}
 
-\begin{comment}
-
-\newcommand{\Xon} {$1{\rightarrow}N$\xspace}
-\newcommand{\Xno} {$1{\leftarrow}N$\xspace}
-\newcommand{\Xnn} {$N{\leftrightarrow}N$\xspace}
-\newcommand{\Xoo} {$1{\leftrightarrow}1$\xspace}
-\newcommand{\Xo}  {$1{\hookleftarrow}$\xspace}
-
-\end{comment}
-     
 \sloppy
 
 \title{Comparação de Sistemas de Reputação com o \FC}
@@ -34,7 +24,8 @@
 \maketitle
 
 \begin{resumo} 
-  Ainda para fazer
+
+É importante que usuários de redes \PtoP possam confiar uns aos outros para poder trocar conteúdo, sendo um dos grandes desafios desse tipo de rede garantir esse confiança entre \emph{peers}. O \FC é uma rede descentralizada \PtoP que promove a comunicação de diferentes usuários através de tópicos no qual estão inscritos. Para assegurar a confiabilidade dos usuários nesse tópico o \FC apresenta um sistema de reputação próprio. Nesse trabalho será avaliado o sistema de reputação do \FC em comparação com outros modelos de reputação para redes \PtoP propostos em outros artigos. Primeiro será introduzido brevemente cada sistema de reputação a ser comparado seguido da introdução do modelo de reputação do \FC. Depois o \FC será comparado diretamente com cada um dos sistemas mencionados anteriormente.
   
 \end{resumo}
 
@@ -69,7 +60,7 @@ O \emph{Stack Overflow} é um outro exemplo de um sistema de reputação onde us
 
 Apesar de o \FC ser uma ferramenta descentralizada é importante avaliar também sistemas de reputação de sistemas centralizados. Como mencionando no início desta seção, sistemas de reputação estão mais evidentes no cotidiano das pessoas do que se imagina. As redes socais em geral são centralizadas e apresentam sistemas de reputação em que usuários se avaliam e assim são incentivados a postar mais conteúdo, aumentando o escopo da rede.
 
-Nesse trabalho será apresentado dois sistemas de reputação centralizados sugeridos como melhoras para os atualmente utilizados pela \emph{Wikipedia} e \emph{Stack Overflow}.
+Nesse trabalho será apresentado dois sistemas de reputação centralizados sugeridos como melhoras para os atualmente utilizados pela \emph{Wikipedia} e \emph{Stack Overflow}. Esses sistemas foram escolhidos pelo fato que focam em reputação obtida através do conteúdo proposto por cada autor. Os sistemas de reputação descentralizados que serão avaliados nesse trabalho não apresentam essa característica, com a reputação não sendo avaliada pelo conteúdo postado mas sim pelas ações de cada usuário. Posteriormente na Seção \ref{sec:comparacao} essa característica de reputação pelo conteúdo que vai ser comparada com o \FC. 
 
 Em seu trabalho \cite{adler2007content} apresenta um sistema de reputação para \emph{Wikipedia} com o intuito de melhorar a integridade das suas postagens. Ele propõem avaliar o usuário a partir do quanto a sua contribuição é mantida e o quanto é alterado em subsequentes edição daquela página. Em outras palavras, não é avaliado o quanto o usuário está ativo no sistema mas a qualidade de sua influência. 
 
@@ -95,7 +86,9 @@ Esse sistema de reputação adquire várias características inerentes a uma \em
 
 Ao guardar as transações em uma \emph{blockchain} todos os usuários tem acesso ao histórico de reputação daquela rede e podem realizar consultas a reputação de outros usuários a qualquer momento. Por ser uma \emph{blockchain} o sistema de reputação se mostra confiável após algum tempo de serviço já que o poder computacional para um usuário malicioso "corromper" a rede cresce drasticamente.
 
-\cite{ekanayake2014decentralized}
+\cite{1231515}
+
+Um outro trabalho propõem um \cite{ekanayake2014decentralized}
 
 \section{Sistema de reputação do \FC} \label{sec:freechains}
 
@@ -150,34 +143,19 @@ Por fim, usuários sem reputação não podem propagar mensagens, ou seja, suas 
 
 \section{Comparações com \FC} \label{sec:comparacao}
 
-%Um usuário no \FC no entanto avalia não outros usuário mas o conteúdo proposto por eles.
+Nesta Seção será comparado cada um dos sistemas de reputação apresentados na Seção\ref{sec:trabrec} com o sistema de reputação do \FC apresentado na Seção \ref{sec:freechains}. Os sistema de reputação serão comparados na ordem em que que foram apresentados na Seção \ref{sec:trabrec}.
 
-Ainda para fazer
+Os próximos dois sistemas de reputação apresentados são feitos para redes centralizadas enquanto o \FC foi desenvolvido para um rede descentralizada, apesar disso a comparação é válida quando se observa que ambos os sistemas focam em reputação recebida pelo conteúdo postado pelos usuários e será nesse ponto que será focado.
+
+O primeiro sistema de reputação apresentado foi o de \cite{adler2007content} para a \emph{Wikipedia}. Uma das similaridades entre o \FC e o sistema proposto é o fato de que ambos os sistemas de reputação são influenciados pelo conteúdo postado por cada autor em suas respectivas plataformas. Dessa forma pode-se dizer que a reputação de um usuário é baseado em conteúdo.
+
+Outra similaridade é o fato 
+
+%Um usuário no \FC no entanto avalia não outros usuário mas o conteúdo proposto por eles.
 
 \section{Conclusão}\label{sec:conclusao}
 
 Ainda para fazer
-
-\begin{comment}
-Exemplo de figuras e tabelas para usar depois
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.3\textwidth]{fig2.jpg}
-\caption{This figure is an example of a figure caption taking more than one
-  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
-\label{fig:exampleFig2}
-\end{figure}
-
-
-\begin{table}[ht]
-\centering
-\caption{Variables to be considered on the evaluation of interaction
-  techniques}
-\label{tab:exTable1}
-\includegraphics[width=.7\textwidth]{table.jpg}
-\end{table}
-\end{comment}
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
