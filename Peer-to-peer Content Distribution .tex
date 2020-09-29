@@ -1,0 +1,185 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usepackage[final]{pdfpages}
+     
+\usepackage{xspace}
+\newcommand{\FC} {Freechains\xspace}
+\newcommand{\PtoP} {\emph{peer-to-peer}\xspace}
+
+\begin{comment}
+
+\newcommand{\Xon} {$1{\rightarrow}N$\xspace}
+\newcommand{\Xno} {$1{\leftarrow}N$\xspace}
+\newcommand{\Xnn} {$N{\leftrightarrow}N$\xspace}
+\newcommand{\Xoo} {$1{\leftrightarrow}1$\xspace}
+\newcommand{\Xo}  {$1{\hookleftarrow}$\xspace}
+
+\end{comment}
+     
+\sloppy
+
+\title{Comparação de Sistemas de Reputação com o \FC}
+
+\author{Lucas d'Amaral Pires\inst{1}} 
+
+\address{Programa de Pós-Graduação em Engenharia \\ Universidade do Estado do Rio de Janeiro (UERJ) \\ Rio de Janeiro -- RJ -- Brasil}
+
+\begin{document} 
+
+\maketitle
+
+\begin{resumo} 
+  Ainda para fazer
+  
+\end{resumo}
+
+
+\section{Introdução} \label{sec:intro}
+
+O mundo de hoje sofre constante mudanças decorrentes das novas tecnologias que surgem a todo momento. Uma das áreas que mudam e evoluem com mais frequência são as redes sociais, responsáveis pela maior disseminação de conteúdo na Internet.
+
+Facebook, Twitter são exemplos de redes sociais centralizadas onde todos seu conteúdo esta armazenado em servidores que ficam a disponibilidade de seus usuários. O fato de serem sistemas centralizados trazem as vantagens de facilidade de gerência de conteúdo e usuários. Em outras palavras, eles conseguem localizar usuários maliciosos e seus conteúdos "malignos" com mais eficiência.
+
+A grande quantidade de dados de seus usuários em um mesmo lugar facilita hackers a roubar essas informações. Além disso essas empresas podem vender esses dados para empresas de comerciais ou ainda usar esse dados para manipular o conteúdo visto pelos seus cliente de maneira que os mantenham mais tempo online usando suas plataformas.
+
+Plataformas descentralizadas \PtoP por outro lado não mantém seus dados em um único lugar mas nos computadores pessoais de cada usuário que as utiliza. Isso não só dificulta hackers de roubar informações em grande quantidade mas também oferece maior privacidade aos seus usuários já que eles são totalmente responsáveis sobre quais informações desejam passar adiante ao invés de uma empresa que tem acesso a seus dados.
+
+Ao contrário dos sistemas centralizados é mais difícil identificar usuários e conteúdos maliciosos já que cada usuário não contém um visão geral da rede mas somente de seus vizinhos. Isso possibilita  infiltração de usuários indesejados com mais facilidade. 
+
+Sistemas de reputação são um tipo de solução implementada tanto em sistemas centralizados quanto sistemas descentralizados para validar usuários e conteúdos postados em um sistema. O objetivo de um sistema de reputação é encorajar usuários a postar conteúdos de qualidade e ser membros produtivos da rede. Dessa maneira também identificam usuários maliciosos e os restringem de maneira que não conseguem contaminar o resto do sistema.
+
+Existem diversos tipos de sistema de reputação em utilização nos dias de hoje com a maior parte deles sendo voltada para reputação de usuários e maquinas com pouco sistemas focados no conteúdo em si. O \FC têm um diferencial pois propõem um sistema de reputação que avalia o conteúdo postado por cada usuário. 
+
+Na Seção \ref{sec:trabrec} será analisado com mais detalhes os sistemas de reputação propostos nesses últimos anos. Na Seção \ref{sec:freechains} será apresentado o sistema de reputação do \FC. Na Seção \ref{sec:comparacao} o \FC será comparado com diversos sistemas de apresentados na Seção \ref{sec:trabrec}. Por fim na Seção \ref{sec:conclusao} a conclusão do trabalho é apresentada assim como ideias para trabalhos futuros.
+
+\section{Trabalhos Relacionados} \label{sec:trabrec}
+
+Ao longo dos anos vários sistemas de reputação foram propostos tanto para redes centralizadas como para as descentralizadas. A função principal da reputação é avaliar um usuário quanto a sua confiabilidade e integridade. A maior parte dos sistemas de reputação avaliam um usuário e seu comportamento na rede em que faz parte. 
+
+Apesar de não ser aparente sistemas de reputação estão presentes na maior parte das aplicações dos dias hoje. O \emph{Facebook} apresenta o conceito de \emph{likes} onde usuários avaliam a postagem de outros usuários. \emph{Instagram}, \emph{Pinterest} e \emph{Twitter} também são exemplos de redes sociais que utilizam um sistema em que usuários avaliam uns aos outros. Os \emph{feedbacks} dos usuários ajudam com o crescimento ou a atenuação do escopo alcançado pelo publicador de conteúdo.  
+
+O \emph{Stack Overflow} é um outro exemplo de um sistema de reputação onde usuários que postam e respondem mais perguntas recebem uma maior reputação no sistema, recebendo assim benefícios.
+
+\subsection{Sistemas de Reputação Centralizados} \label{subsec:SRCentra}
+
+Apesar de o \FC ser uma ferramenta descentralizada é importante avaliar também sistemas de reputação de sistemas centralizados. Como mencionando no início desta seção, sistemas de reputação estão mais evidentes no cotidiano das pessoas do que se imagina. As redes socais em geral são centralizadas e apresentam sistemas de reputação em que usuários se avaliam e assim são incentivados a postar mais conteúdo, aumentando o escopo da rede.
+
+Nesse trabalho será apresentado dois sistemas de reputação centralizados sugeridos como melhoras para os atualmente utilizados pela \emph{Wikipedia} e \emph{Stack Overflow}.
+
+Em seu trabalho \cite{adler2007content} apresenta um sistema de reputação para \emph{Wikipedia} com o intuito de melhorar a integridade das suas postagens. Ele propõem avaliar o usuário a partir do quanto a sua contribuição é mantida e o quanto é alterado em subsequentes edição daquela página. Em outras palavras, não é avaliado o quanto o usuário está ativo no sistema mas a qualidade de sua influência. 
+
+Basicamente, pontos são fornecidos a usuários que realizam atualizações em verbetes que são mantidos por outros usuários e a soma desses pontos são a reputação do usuário. Atualmente a \emph{Wikipedia} não apresenta um sistema de reputação próprio e qualquer pessoa pode editar um verbete o que pode ser um problema em assuntos controversos com opiniões drasticamente diferentes.
+
+O sistema proposto fornece a alternativa de que somente usuários com alta reputação poderiam editar alguns tópicos consideráveis sensíveis. Apesar disso o autor ressalta que o sistema não é próprio para avaliar autores de verbetes de situações cotidianas, já que essas situações estão em constante mudança e qualquer atualização da página contaria negativamente para o autor anterior.
+
+O outro sistema centralizado visto foi proposto para o \emph{Stack Overflow}. Atualmente o \emph{Stack Overflow} apresenta um sistema de reputação que se baseia na atividade do usuário, ou seja, um usuário muito ativo no sistema ganha muita reputação. Em seu trabalho \cite{huna2016exploiting} apresenta o problema de usuários que usam o sistema simplesmente para ganhar reputação sem oferecer contribuições válidas.
+
+Para combater esse problema o autor desenvolveu um sistema de reputação próprio para o \emph{Stack Overflow} avaliando o conteúdo das postagens ao invés da atividade do usuário. Dessa maneira um usuário que posta perguntas ou respostas consideradas relevantes ou importantes ganham mais reputação do que usuários que respondem simplesmente querendo ganhar reputação.
+
+A solução apresentada não somente desincentiva usuários a postar uma resposta fraca ou ruim mas também eleva a posição de usuários que contribuem com conteúdo válido ou bom.
+
+\subsection{Sistemas de Reputação Descentralizados} \label{subsec:SRDescen}
+
+Em seu trabalho \cite{10.1145/1041680.1041681} faz um apanhado de tecnologias \PtoP de distribuição de conteúdo. O artigo apresenta um conjunto de definições importantes para os trabalhos desenvolvidos na área. Apesar de não focar em sistemas de reputação o trabalho foi essencial no desenvolvimento do conhecimento necessário para avaliar sistemas \PtoP e suas peculiaridades.
+
+A seguir será analisado diversos sistemas de reputação propostos para redes descentralizadas \PtoP.
+
+Em seus trabalhos \cite{dennis2015rep} e \cite{dennis2016rep} avaliaram e desenvolveram as ideias propostas em \cite{nakamoto2008peer} e propuseram uma sistema de reputação baseado em \emph{blockchain} com o intuito de promover um sistema que permite a participação entre usuários desconhecidos de maneira confiável. 
+
+Esse sistema de reputação adquire várias características inerentes a uma \emph{blockchain} para garantir a confiabilidade da reputação dos usuários que participam da rede. Para isso é proposto a criação de uma \emph{blockchain} nova que tem o propósito de guardar a reputação obtida ao final de uma transação entre usuários.
+
+Ao guardar as transações em uma \emph{blockchain} todos os usuários tem acesso ao histórico de reputação daquela rede e podem realizar consultas a reputação de outros usuários a qualquer momento. Por ser uma \emph{blockchain} o sistema de reputação se mostra confiável após algum tempo de serviço já que o poder computacional para um usuário malicioso "corromper" a rede cresce drasticamente.
+
+\cite{ekanayake2014decentralized}
+
+\section{Sistema de reputação do \FC} \label{sec:freechains}
+
+O sistema \PtoP \FC é do tipo \emph{publish-subscribe} e oferece vários tópicos. Um usuário pode se inscrever em um tópico \emph{(subscribe)} e publicar \emph{(publish)} conteúdo. Os tópicos são diversos e podem ser sobre qualquer assunto sendo divididos 
+em três categorias: \textbf{grupo privado, identidade pública e fóruns públicos}. 
+
+Em \textbf{grupos privados} usuários podem se comunicar da mesma maneira que um grupo no \emph{WhatsApp}, assume-se que todos os integrantes do grupo são produtivos e confiáveis portanto todos os integrantes possuem reputação infinita e podem trocar conteúdo livremente.
+
+Em tópicos de \textbf{identidade pública} somente um usuário pública mensagens e os outros usuários somente podem visualiza-las. Simular a uma notícia em um site de jornalismo onde o repórter escreve uma reportagem e os leitores não podem modifica-las. Nesse tipo de tópico o autor têm reputação infinita e pode postar o que quiser quantas vezes quiser.
+
+Por fim, \textbf{fóruns públicos} são tópicos em que todos os seus assinantes podem publicar mensagens não tendo necessariamente confiança entre os usuários (o contrário dos grupos privados). Dessa maneira é necessário um sistema de reputação próprio e customizado para atender as necessidades de segurança e validade de usuários e conteúdos. O sistema de reputação implementado pelo \FC para fóruns públicos é detalhado a seguir.
+
+\subsection{Fóruns Públicos} \label{subsec: forunspub}
+
+O sistema de reputação criado tem o objetivo de evitar SPAM, notícias falsas e conteúdo ilícito. A reputação do \FC é voltada para avaliação de conteúdo, logo a reputação de cada usuário pode variar entre os diferentes tópicos em que esta escrito. 
+
+A unidade \emph{rep} foi definida para controlar a quantidade de reputação que cada usuários têm em cada tópico. Ela pode ser transferida entre usuários através de \textbf{\emph{likes}} e \textbf{\emph{dislikes}} nas publicações de cada usuários.
+
+Para facilitar a gerência da rede e evitar que usuários ganhem muita reputação e abusem dela foram impostos diversos limites de como unidades de \emph{rep} podem ser usadas. 
+
+\subsubsection{Geração} \label{subsubsec:geracao}
+
+Para poder haver qualquer tipo de validação de uma postagem no início do tópico é necessário que o primeiro usuário ao criar o tópico também ganhe reputação e assim consiga postar conteúdo. Logo, a primeira postagem de uma cadeia automaticamente adiciona trinta \emph{rep} ao autor. 
+
+Postar conteúdo também gera \emph{rep}, dessa maneira usuários são recompensados por contribuir no tópico com reputação. Porém para os usuários não abusarem dessa regra e começarem a postar qualquer tipo de de conteúdo indiscriminadamente para conseguir reputação também foi estipulado que somente postagens com pelo menos 24 horas de vida contam com uma reputação positiva para o autor com no máximo de uma reputação por dia. 
+
+Só existem duas maneiras de ganhar reputação em um tópico o que torna unidades de \emph{rep} valiosas, ao mesmo incentivando a produção de conteúdo, para ganhar mais reputação, mas também incentivando cautela no quanto de reputação deve ser gasto.  
+
+\subsubsection{Consumo} \label{subsubsec:consumo}
+
+Postar conteúdo com menos de 24 horas desde a última postagem consume uma \emph{rep} do usuário. Essa medida incentiva cada usuários a postar conteúdo de alta qualidade para conseguir \emph{likes} de outros usuários e compensar a reputação gasta.
+
+Outra motivo importante dessa regra é que ela ajuda na prevenção de SPAM e outros ataques de usuários maliciosos. Já que para postar mensagens uma seguida da outra é consumido reputação do usuário ele não consegue encher o tópico de mensagens indesejadas já que sua própria reputação é rapidamente depletada. 
+
+\subsubsection{Transferência} \label{subsubsec:transfe}
+
+Existem duas maneira de transferir reputação entre diferentes usuários. A primeira é dando um \emph{like} em uma postagem de outros usuário. Nesse caso o usuário que postou uma mensagem ganha uma unidade de \emph{rep} e o usuário que deu o \emph{like} perde uma unidade de \emph{rep}. Em outras palavras, é realizado uma transferência de \emph{rep} de um usuário para outro. 
+
+A vantagem de \emph{likes} para o tópico são o incentivo de conteúdo  bom ser postado na rede. Os diversos autores de conteúdo recebem uma vantagem em \emph{rep} para realizar postagens que agradem outros usuários inscritos naquele tópico.
+
+A outra maneira que um usuário pode afetar outros usuários da rede são através de \emph{dislikes}. Nesse caso ao usuário dar um \emph{dislike} na postagem de outros usuário ele esta retirando uma unidade de \emph{rep} do autor da postagem ao mesmo que tempo que retira uma de suas próprias unidades de \emph{rep}. Caso uma postagem tenha pelo menos 5 \emph{dislikes} e o dobro de \emph{dislikes} comparado com \emph{likes} a postagem é banida da rede.  
+
+A vantagem de \emph{dislike} é que ele permite a eliminação de conteúdo indesejado do tópico ao mesmo tempo que penaliza o usuário que fez aquela postagem. Isso incentiva usuários a postarem somente conteúdo relevante ao tópico para que não sejam penalizados. Por outro lado um \emph{dislike} retira \emph{reps} permanentemente da rede, o que é um incentivo ainda maior evitar conteúdo desagradável.
+
+\subsubsection{Regras adicionais} \label{subsubsec:+regras}
+
+Para evitar que um usuário ganhe muita reputação e futuramente abuse dessa reputação, existe um limite quanto a quantidade máxima de \emph{reps} que um usuário pode ter. Cada usuário pode ter no máximo trinta unidade de \emph{rep} a qualquer momento. Uma das vantagens dessa medida é que um usuário malicioso não consegue acumular reputação para futuramente lançar um ataque na rede. Os usuários também são incentivados a gastar sua reputação com \emph{likes} e \emph{dislikes} de maneira que não "percam" unidade de \emph{rep} ao atingir o limite e ficarem impossibilitadas de ganhar mais.
+
+Outra medida que visa incentivar usuários a avaliarem o conteúdo da rede com \emph{likes} e \emph{dislikes} é o limite de 3 meses nos quais as unidades de \emph{rep} são válidas. Após 3 meses qualquer \emph{rep} não utilizado é deletado e perdido. 
+
+Por fim, usuários sem reputação não podem propagar mensagens, ou seja, suas postagens ficam retidas e não são retransmitidas até que o usuário possa pagar a taxa de um \emph{rep}. Essa medida ajuda a manter a rede honesta e evita ataques de usuários maliciosos pois eles não conseguem mandar mensagens quando sua reputação e menor ou igual a zero.
+
+\section{Comparações com \FC} \label{sec:comparacao}
+
+%Um usuário no \FC no entanto avalia não outros usuário mas o conteúdo proposto por eles.
+
+Ainda para fazer
+
+\section{Conclusão}\label{sec:conclusao}
+
+Ainda para fazer
+
+\begin{comment}
+Exemplo de figuras e tabelas para usar depois
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.3\textwidth]{fig2.jpg}
+\caption{This figure is an example of a figure caption taking more than one
+  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
+\label{fig:exampleFig2}
+\end{figure}
+
+
+\begin{table}[ht]
+\centering
+\caption{Variables to be considered on the evaluation of interaction
+  techniques}
+\label{tab:exTable1}
+\includegraphics[width=.7\textwidth]{table.jpg}
+\end{table}
+\end{comment}
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
