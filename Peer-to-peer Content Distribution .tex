@@ -86,9 +86,25 @@ Esse sistema de reputação adquire várias características inerentes a uma \em
 
 Ao guardar as transações em uma \emph{blockchain} todos os usuários tem acesso ao histórico de reputação daquela rede e podem realizar consultas a reputação de outros usuários a qualquer momento. Por ser uma \emph{blockchain} o sistema de reputação se mostra confiável após algum tempo de serviço já que o poder computacional para um usuário malicioso "corromper" a rede cresce drasticamente.
 
-\cite{1231515}
+Em seu artigo \cite{1231515} apresenta um sistema de confiança em redes \PtoP que variam entre usuários. Em seu sistema ele considera que o que é válido para um usuário pode não ser valido para outro e assim diferencia a reputação entre os usuários. Por exemplo, um usuários A prefere receber conteúdo de maneira rápida enquanto um usuário B prefere receber conteúdo de qualidade alta. Logo a reputação de de B para A é baixa e vice-versa. Em um caso de dois \emph{peers} com o mesmo interesse eles podem compartilhar informação de \emph{peers} com que também tem o mesmo interesse formando uma rede de confiança e alta reputação automaticamente entre membros parecidos.
 
-Um outro trabalho propõem um \cite{ekanayake2014decentralized}
+Um sistema de reputação denominado \emph{PowerTrust} foi desenvolvido por \cite{zhou2007powertrust} com o intuito de se aproveitar do modelo \emph{power-law}. Em seus estudos eles observaram que alguns \emph{peers} tendem a congregar conteúdo e logo são mais ativos na rede. Assim a maior parte dos \emph{peers} se comunicam com esses super-usuários. 
+
+Enquanto cada usuário mantém localmente a reputação de cada um de seus vizinhos de acordo com trocas de conteúdo já realizadas anteriormente, a reputação global de cada \emph{peer} tende a ser guardado nos super-usuários para fácil consulta. Esses super-usuários são dinamicamente escolhidos de acordo com a congregação de \emph{peers} neles e podem ser alterados de acordo com o comportamento da rede.
+
+O mesmo autor também sugeriu um outro sistema de reputação  baseado no protocolo de \emph{gossip} em \cite{zhou2007gossip}. Nesse sistema de reputação denominado \emph{GossipTrust} o objetivo também é agregar as reputações de cada usuário conseguir um valor global de reputação. Essa agregação é feita através de \emph{gossip} entre os \emph{peers}.
+
+Depois de um tempo aleatório cada \emph{peer} contata um de seus vizinhos para trocar informações de reputação com ele, a partir da informação recebida é calculado uma nova reputação dos usuários daquela rede. Cada \emph{peer} utiliza as informações recebidas para então realizar um algoritmo probabilístico com o intuito de chegar o mais perto possível do valor global real de reputação de cada \emph{peer}.
+
+Em seu trabalho \cite{mortazavi2006cumulative} introduzem um sistema de reputação que busca justiça entre a colaboração de um usuário na rede a sua quantidade de reputação. Cada \emph{peer} tem uma variável que indica o nível de cooperação desejado que pode ser mudado por ele mesmo. Ao mesmo tempo ele tem um nível de reputação que só pode ser alterado por outros \emph{peers} que realizam troca de conteúdo com ele.
+
+A quantidade de reputação que cada usuário possui influencia quais outros \emph{peers} ele tem acesso. Um usuário que coloca um alta nível de cooperação para si faz mais troca com outros usuários e tem sua reputação aumentada. Assim consegue receber um melhor serviço no futuro pois outros usuários de alta reputação querem trabalhar com ele já que ele tem uma boa reputação.
+
+O último artigo a ser apresentado é o trabalho de \cite{gupta2003reputation}. Nesse artigo o autor apresenta dois  sistemas de reputação com base em crédito, ou seja, a reputação é uma unidade de troca de serviços.
+
+No primeiro sistema denominado DCRC \emph{(Debit-Credit Reputation Computation)} a reputação de um usuário pode ser alterada da seguinte maneira: respondendo a pergunta de outros usuários quanto a conteúdo fornecido; fornecendo conteúdo para \emph{download}; baixando conteúdo de outros \emph{peers}; fornecer conteúdo raro (com pouca instâncias na rede). Nesse caso o usuários recebe reputação em todos os casos exceto baixar conteúdo, onde perde reputação para fazer tal. A reputação ganha não expira e pode ser usada a qualquer momento.
+
+O segundo sistema é denominado CORC e nele não existe perda de crédito por baixar conteúdo de outros \emph{peers}, somente ganho de reputação, porém agora ela tem um limite temporal de expiração no qual se o usuário não usar a reputação ela é perdida. 
 
 \section{Sistema de reputação do \FC} \label{sec:freechains}
 
@@ -145,13 +161,54 @@ Por fim, usuários sem reputação não podem propagar mensagens, ou seja, suas 
 
 Nesta Seção será comparado cada um dos sistemas de reputação apresentados na Seção\ref{sec:trabrec} com o sistema de reputação do \FC apresentado na Seção \ref{sec:freechains}. Os sistema de reputação serão comparados na ordem em que que foram apresentados na Seção \ref{sec:trabrec}.
 
-Os próximos dois sistemas de reputação apresentados são feitos para redes centralizadas enquanto o \FC foi desenvolvido para um rede descentralizada, apesar disso a comparação é válida quando se observa que ambos os sistemas focam em reputação recebida pelo conteúdo postado pelos usuários e será nesse ponto que será focado.
+\subsection{Comparação com Sistemas de Reputação Centralizados} \label{subsec:CompSRC}
+
+Os próximos dois sistemas de reputação apresentados são feitos para redes centralizadas enquanto o \FC foi desenvolvido para um rede descentralizada, apesar disso a comparação é válida quando se observa que ambos os sistemas focam em reputação recebida pelo conteúdo postado pelos usuários e será nesse ponto que será focado a avaliação.
 
 O primeiro sistema de reputação apresentado foi o de \cite{adler2007content} para a \emph{Wikipedia}. Uma das similaridades entre o \FC e o sistema proposto é o fato de que ambos os sistemas de reputação são influenciados pelo conteúdo postado por cada autor em suas respectivas plataformas. Dessa forma pode-se dizer que a reputação de um usuário é baseado em conteúdo.
 
-Outra similaridade é o fato 
+Outra similaridade é o fato de que a unidade de reputação em \cite{adler2007content} incentiva os usuários a postarem conteúdos de qualidade a partir de recompensas recebidas por bom conteúdo.
 
-%Um usuário no \FC no entanto avalia não outros usuário mas o conteúdo proposto por eles.
+Uma vantagem que o \FC apresenta é que é possível influenciar diretamente a reputação de outro usuário, permitindo que um usuários do \FC possa impedir que usuários malicioso contamine a rede enquanto postagens na \emph{Wikipedia} são anônimas, logo um usuário malicioso pode contaminar o conteúdo do verbete. O sistema de reputação não impede a ação de usuários maliciosos, ele apenas aumenta a confiabilidade no texto escrito por um usuários de alta reputação.
+
+O outro sistema centralizado apresentado nesse trabalho foi o proposto por \cite{huna2016exploiting} para o \emph{Stack Overflow}.
+Assim como o \FC essa proposta incentiva a usuários a postarem conteúdo de qualidade oferecendo reputação como recompensa. Em ambos os sistemas de reputação usuários podem votar no conteúdo postado, concedendo reputação para o autor da postagem ou tirando reputação de um usuário malicioso. 
+
+Ambos os sistemas de reputação são bem similares oferecendo reputação por postar conteúdo e participação na rede, porém o \FC introduz um limite na quantidade máxima de reputação que um usuário pode e em custo para postar conteúdo com o intuito de evitar que um usuário malicioso acumule reputação e lance um ataque. O mesmo não é verdade no sistema proposto para o \emph{Stack Overflow}, a reputação de cada usuário é infinita e como não existe custo para postar conteúdo (somente o desencorajamento de perda de reputação) esse sistema é vulnerável a ataques de usuários maliciosos.
+
+Um das diferenças que o \FC tem com os dois sistemas de reputação mencionados anteriormente é que um usuário pode ter diferentes reputações em diferentes tópicos. Não existe um valor universal de reputação de um usuário. Isso pode ser uma desvantagem para localizar um usuário malicioso que pode ser "banido" de um tópico mas ainda assim ser um membro da rede contaminando outros tópicos.  
+
+\subsection{Comparação com Sistemas de Reputação Descentralizados} \label{subsec:CompSRD}
+
+Os sistemas de reputação avaliados a seguir são baseados em redes descentralizadas assim como o \FC. Porém ao contrário do \FC  eles focam em ações de um usuário e não no conteúdo compartilhado por eles.
+
+O sistema de reputação apresentado em \cite{dennis2015rep} e \cite{dennis2016rep} é baseado na tecnologia de \emph{blockchain}. A principal ideia do sistema deles é criar uma \emph{blockchain} responsável por guardar a reputação e as transações entre usuários. O \FC apresenta uma ideia similar, onde cada tópico apresenta uma cadeia no estilo de \emph{blockchain} e qualquer usuário pode verificar a cadeia para consultar a reputação de outros usuários.
+
+Em termos de estrutura esse sistema de assemelha muito com o \FC na maneira de como guarda a reputação como na maneira como cresce. Ambos apresentam problemas quanto ao custo que guardar a reputação pode ter com o tempo (quantidade de bytes) e a demora de consulta em tópicos muito antigos.
+
+Uma diferença que esse sistema com o \FC é o fato de serem guardados a reputação global de cada usuário, ou seja, todos as transações de um usuários são guardadas na \emph{blockchain} enquanto no \FC cada tópico tem sua própria reputação. Por um lado as cadeias no \FC crescem mais devagar e assim o peso delas demora para acumular quando comparado com o sistema proposto em \cite{dennis2015rep} e \cite{dennis2016rep}.
+
+O trabalho realizado por \cite{1231515} descreve um sistema de reputação no qual a reputação de um usuário pode variar de acordo com as características procuradas. Usuários que buscam a mesma qualidade em seus \emph{peers} tendem a ficar juntos e formar uma sub-rede não dissimilar aos tópicos do \FC. 
+
+O sistema de reputação de certa maneira funciona mais com o intuito de facilitar usuários a identificar outros usuários semelhantes na busca por conteúdo ao contrário do \FC onde a busca de usuários com interesses semelhante é anterior ao sistema de reputação mas durante a inscrição de tópicos.
+
+Ao contrário do \FC, o sistema de reputação de \cite{1231515} não oferece nenhuma proteção contra usuários maliciosos, assumindo que todos os usuários que participam da rede têm boas intenções. O incentivo ao usuários participarem da troca de conteúdo de qualidade também não existe nesse rede, onde a consequência principal de seus sistema de reputação é a criação de sub-redes de usuários com os mesmo interesses.
+
+Assim como o \FC o sistema proposto por \cite{zhou2007powertrust} tenta controlar o abuso de usuários maliciosos disponibilizando a reputação global de seus usuários para acesso comum. Porém enquanto o sistema proposto se utiliza de super-usuários o \FC se utiliza de mecanismos derivados da tecnologia \emph{blockchain} de maneira que todos os usuários tenham sempre a reputação de outros guardada. 
+
+Uma falha inerente ao sistema que não está presente no \FC é o fato de que estão dependentes dos super-usuários que guardam reputações globais, caso eles todos fiquem \emph{offline} em um curto período de tempo a reputação global se perde e precisam ser selecionados novos super-usuários. No \FC qualquer usuário pode consultar seu registro de blocos para verificar a reputação de outro usuário, uma desvantagem é que essa abordagem do \FC ocupa mais espaço de disco.
+
+O modelo \emph{GossipTrust} introduzido em \cite{zhou2007gossip} combina com o \FC já que ele apresenta a ideia de compartilhar reputação através de um algoritmo de \emph{gossip} da mesma maneira que os usuários do \FC propagam suas mensagens em um tópico. A vantagem que o \FC apresenta sobre o \emph{GossipTrust} é o fato de que a reputação exata de cada usuário pode ser consultada analisando a cadeia de mensagens enquanto no \emph{GossipTrust} as reputações são compartilhadas aleatoriamente com outros \emph{peers} e a reputação global é obtida através de um algoritmo probabilístico que demanda recursos de computação e não garante sucesso. 
+
+O \FC busca incentivar seus usuários a compartilhar conteúdo de qualidade ao mesmo tempo que desencoraja usuários maliciosos de atuarem através de seu sistema de reputação. No trabalho realizado em \cite{mortazavi2006cumulative} o sistema de reputação deles busca uma balança entre a disposição de um usuário de participar na rede e sua reputação. Nesse sentido ambos os sistemas são similares pois buscam recompensar com reputação usuários participativos.
+
+Apesar disso um efeito do sistema de \cite{mortazavi2006cumulative} é a aglomeração de usuários de alta reputação enquanto usuários novos ou de baixa reputação não conseguem alcança-los. O \FC e sua propagação de conteúdo estão acessíveis a todos os usuários de um tópico não importa o quanto tenham particionado até então.
+
+O último artigo a ser comparado com o \FC, \cite{gupta2003reputation} apresenta dois sistema de reputação. O DCRC assim como o \FC apresenta o conceito de incentivar usuários a participar da rede oferecendo reputação como recompensa ao mesmo tempo que controla a quantidade de reputação retirando-a ao adquirir recursos de outros usuários. Apesar disso ele não apresenta um controle para evitar a ação de usuários maliciosos já que ter uma reputação baixa não impede eles de fornecerem arquivos contaminados.
+
+O segundo sistema denominado CORC retira a perda de reputação o que o diferencia do \FC porém introduz a ideia de expiração de reputação após um tempo predeterminado o que é uma das medidas adotadas pelo \FC incentivar a participação de \emph{peers} com conteúdo.
+
+Como mencionado anteriormente todos os sistemas de reputação para redes \PtoP descentralizados analisados tem foco em troca de arquivos e a reputação serve para identificar usuários confiáveis para a troca. Assim, foram comparados somente as características do \FC que podem gerar um paralelo com os sistemas propostos e os pontos em que são completamente diferentes e não faz sentido correlacionar os dois sistemas não foram mencionados.  
 
 \section{Conclusão}\label{sec:conclusao}
 
