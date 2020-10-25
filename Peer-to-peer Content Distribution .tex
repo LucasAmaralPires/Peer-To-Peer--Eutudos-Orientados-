@@ -25,28 +25,39 @@
 
 %Lembrar de escrever sobre Reddit, Aether e IPFS
 
+% Não esquecer do Aether. Colocar na lista também o Retroshare: https://classroom.google.com/c/MTc2NjM4NTA0NDE0/m/MTg4MjM3MzcxOTky/details
+
+% Parei antes da Seção 3 e vou esperar.
+% Acho que a discussão sobre as categorias vai precisar melhorar bastante e aquela tabela acho que vai ser importante.
+% Te peço pra colocar uma frase por linha no texto inteiro pra facilitar os diffs.
+
 \begin{resumo} 
 
-O \FC é uma rede descentralizada \PtoP que promove a comunicação de diferentes usuários através de tópicos no qual estão inscritos. Para assegurar a confiabilidade dos usuários nesse tópico o \FC apresenta um sistema de reputação próprio. Nesse trabalho será avaliado o sistema de reputação do \FC em comparação com outros modelos de reputação para redes \PtoP propostos em outros artigos. As comparações são feitas acentuando as similaridades com \FC e descrevendo as vantagens e desvantagens das diferenças. Não é possível fazer uma comparação direta de muitos desses sistemas com o \FC porque o \FC é focado na qualidade do conteúdo de compartilhado por cada usuário enquanto a maioria outros sistemas de reputação focam na disponibilidade de seus membros. No final do trabalho é feito um resumo das características do \FC e dos sistemas comparados destacando as principais vantagens e desvantagens de cada um.
+O \FC é uma rede descentralizada \PtoP que promove a comunicação de diferentes usuários através de tópicos públicos no qual estão inscritos.  Para assegurar a qualidade do conteúdo e a confiabilidade dos usuários nesses tópicos, o \FC apresenta um sistema de reputação próprio.  Nesse trabalho avaliamos o sistema de reputação do \FC em comparação com outros modelos de reputação para redes \PtoP.  O que você compara? Aqui entrariam as diferenças do que a reputação mede.  (Não é possível fazer uma comparação direta de muitos desses sistemas porque o \FC é focado na qualidade do conteúdo compartilhado por cada usuário enquanto que a maioria outros sistemas de reputação focam na disponibilidade de seus membros.) Como você compara?  Qual é a conclusão?
+% (isso é meio óbvio) As comparações são feitas acentuando as similaridades com o \FC e descrevendo as vantagens e desvantagens das diferenças.
+% (isso também) No final do trabalho é feito um resumo das características do \FC e dos sistemas comparados destacando as principais vantagens e desvantagens de cada um.
   
 \end{resumo}
 
 
 \section{Introdução} \label{sec:intro}
 
-Disseminação de conteúdo é uma dos principais motivos da utilização da \emph{Internet}. Existem dois principais tipos de estrutura utilizados. Redes centralizadas como, o \emph{Facebook} e o \emph{Twitter} são exemplos de redes sociais em que todo seu conteúdo está armazenado em servidores centrais. Redes descentralizadas, como o \emph{BitTorrent}, são exemplos de redes de compartilhamento de conteúdo onde cada usuários da rede pode possuir uma cópia de um conteúdo e compartilha-lo. 
+% Lucas, nessa introdução você tem que discutir essa questão de centralização vs descentralização já focando no sistema de reputação e não em diferenças genéricas entre elas.
+% Por exemplo, pense em cada uma das coisas que o sistema de reputação resolve e vê se é bem resolvido no sistema descentralizado. Se não for resolvido, tem que aparecer aqui.
+% Se for um problema/solução que sequer existe em sistemas centralizados, então também tem que estar aqui de cara.
 
-Uma das vantagens de sistemas centralizados é a facilidade de gerenciar o conteúdo. Em outras palavras, como o conteúdo está armazenado em conjunto, é possível localizar conteúdos "malignos" e os usuários que os colocaram lá com mais eficiência.
+Disseminação de conteúdo é uma dos principais motivos da utilização da \emph{Internet}. Existem dois principais tipos de estrutura utilizados.  Redes centralizadas, como o \emph{Facebook} e o \emph{Twitter}, são exemplos de redes sociais em que todo seu conteúdo está armazenado em servidores centrais.  Redes descentralizadas, como o \emph{BitTorrent}, são exemplos de redes de compartilhamento de conteúdo onde cada usuários da rede pode possuir uma cópia de um conteúdo para compartilha-lo. 
 
-Um problema de sistemas centralizados é que empresas podem vender esses dados para outras empresas fazerem anúncios ou ainda usar esses dados para manipular o conteúdo visto pelos seus cliente de maneira que os estes permaneçam mais tempo online usando suas plataformas.
+Uma das vantagens de sistemas centralizados é a facilidade de gerenciar o conteúdo.  Em outras palavras, como o conteúdo está armazenado em conjunto, é possível localizar com mais eficiência conteúdos "malignos" e os usuários que os colocaram lá. % evitar aspas. pq é mais possível? localizar ou retirar?
+% eu juntaria is parágrafos já que falam de sistemas centralizados
+Um problema de sistemas centralizados é que empresas podem vender esses dados para outras empresas fazerem anúncios ou ainda usar esses dados para manipular o conteúdo visto pelos seus clientes de maneira que os estes permaneçam mais tempo online usando suas plataformas. % por que vc focou unicamente nesse problema? tem a questao de escalabilidade e tantas outras. seria bom explicar. "O principal problema de sistemas centralizados que iremos focar neste trabalho, ..."
 
-Sistemas descentralizadas \PtoP por outro lado não mantém seus dados em um único lugar mas nos computadores pessoais de cada usuário que os utilizam. Isso oferece maior privacidade aos seus usuários já que eles são totalmente responsáveis sobre quais informações desejam passar adiante ao invés de uma empresa que tem acesso aos seus dados.
-
+Sistemas descentralizadas \PtoP por outro lado não mantém seus dados em um único lugar mas nos computadores pessoais de cada usuário que os utilizam.  Isso oferece maior privacidade aos seus usuários já que eles são totalmente responsáveis sobre quais informações desejam passar adiante, ao invés de uma empresa que tem acesso aos seus dados. % privacidade ou controle? uma vez que ele passou pro centralizado, ele também vai passar adiante igualmente
+% eu juntaria is parágrafos já que falam de sistemas descentralizados
 Ao contrário dos sistemas centralizados é mais difícil identificar usuários e conteúdos maliciosos em redes \PtoP já que as ferramentas que precisam ser implementadas para que usuários tenham uma visão geral da rede são custosas. 
+% como assim custosas?
 
-Sistema de reputação é uma das soluções implementadas tanto em sistemas centralizados quanto sistemas descentralizados para validar usuários e conteúdos postados. O objetivo de um sistema de reputação é encorajar usuários a postarem conteúdos de qualidade e a serem membros produtivos da rede. Dessa maneira também identificam usuários maliciosos e os restringem de maneira que não conseguem contaminar o resto do sistema.
-
-Neste trabalho estamos avaliando diversos sistemas de reputação, propostos pela literatura, com o \FC. Para facilitar o entendimento estamos categorizando os sistema de reputação descentralizados da seguinte maneira:
+A adoção de um sistema de reputação é uma das soluções implementadas tanto em sistemas centralizados quanto em sistemas descentralizados para validar usuários e conteúdos postados.  O objetivo de um sistema de reputação é encorajar usuários a postarem conteúdos de qualidade e a serem membros produtivos da rede. Dessa maneira também identificam usuários maliciosos e os restringem de maneira que não conseguem contaminar o resto do sistema.  Neste trabalho avaliamos diversos sistemas de reputação, propostos pela literatura, com o \FC [citar sbseg].  Para facilitar o entendimento categorizamos os sistemas de reputação descentralizados da seguinte maneira:
 
 \begin{itemize}
     \item Extrínseco - Recurso é externo ao sistema.
@@ -57,25 +68,51 @@ Neste trabalho estamos avaliando diversos sistemas de reputação, propostos pel
     \end{itemize}
 \end{itemize}
 
-Na Seção \ref{sec:freechains} é apresentado o sistema de reputação do \FC...
+O que é um recurso?
+O que significa ele ser interno ou externo ao sistema?
+E automaticamente ou manualmente?
+Dê exemplos.
+
+Na Seção \ref{sec:freechains} apresentamos o sistema de reputação do \FC...
 %Na Seção \ref{sec:trabrec} será analisado com mais detalhes alguns dos sistemas de reputação propostos nesses últimos anos.  Na Seção \ref{sec:comparacao} o \FC será comparado com os diversos sistemas de apresentados na Seção \ref{sec:trabrec}. Por fim na Seção \ref{sec:conclusao} a conclusão do trabalho é apresentada e ideias de onde expandir o sistema de reputação do \FC no futuro.
 
-\section{Sistema de reputação do \FC} \label{sec:freechains}
+\section{O sistema de reputação do \FC} \label{sec:freechains}
 
-O sistema \PtoP \FC é do tipo \emph{publish-subscribe} e oferece vários tópicos para seus usuários. Um usuário pode se inscrever em um tópico \emph{(subscribe)} e publicar \emph{(publish)} conteúdo. Os tópicos são diversos e podem ser sobre qualquer assunto sendo divididos 
-em três categorias: \textbf{grupo privado, identidade pública e fóruns públicos}. 
+O \FC é sistema \PtoP \emph{publish-subscribe} que oferece vários tópicos para seus usuários. % como assim "vários"?
+Um usuário pode criar, se inscrever \emph{(subscribe)} e publicar conteúdo \emph{(publish)} em tópicos sobre quaisquer assuntos.  Os tópicos são geridos de maneira totalmente descentralizada.
+% aqui tem que explicar o básico de como uma mensagem postada sai de uma máquina e atinge todas as interessadas (deve ser possível copiar algo curto do abstract ou introducao do sbseg)
+Existem três categorias de tópicos que são gerenciadas pelo sistema de maneira diferentes: \textbf{grupos privados, identidades públicas e fóruns públicos}. 
 
-Em \textbf{grupos privados} usuários podem se comunicar da mesma maneira que um grupo no \emph{WhatsApp}, assume-se que todos os integrantes do grupo são produtivos e confiáveis portanto todos os integrantes possuem reputação infinita e podem trocar conteúdo livremente.
+Em \textbf{grupos privados}, assume-se que todos os integrantes do grupo são confiáveis e portanto podem trocar conteúdo livremente.  Essa categoria é similar a trocas de e-mails ou grupos de \emph{WhatsApp}.
+% proponho juntar essas duas no mesmo parágrafo considerando a última frase proposta
+Em tópicos de \textbf{identidade pública}, somente um usuário pública mensagens e os outros usuários somente podem visualizá-las.
+O conteúdo é similar a notícias difundidas por jornalistas para um público indeterminado. % nenhuma categoria permite modificar o conteúdo
+Nessa categoria, o autor pode postar irrestritamente enquanto que seus leitores são meros visualizadores. % apesar de que existe a possibilidade de feedback
+Essas duas categorias são detalhadas em um trabalho anterior [citar sbseg novamente] e não dependem do sistema de reputação do \FC.
 
-Em tópicos de \textbf{identidade pública} somente um usuário pública mensagens e os outros usuários somente podem visualizá-las. Similar a uma notícia em um site de jornalismo onde o repórter escreve uma reportagem e os leitores não podem modificá-la. Nesse tipo de tópico o autor têm reputação infinita e pode postar o que quiser quantas vezes quiser enquanto seus leitores não podem postar nada logo não tem reputação e nenhuma maneira de consegui-la.
+Por fim, \textbf{fóruns públicos} são tópicos em que todos os seus assinantes podem publicar mensagens, não existindo necessariamente confiança entre os usuários.  Dessa maneira se torna necessário um sistema de reputação para atender as necessidades de segurança e validade de usuários e conteúdos.
+% quais necessidades? de exemplos
+O sistema de reputação do \FC tem o objetivo de evitar SPAM, notícias falsas e conteúdo ilícito, além de incentivar usuários a serem membros ativos da rede.  A reputação do \FC é voltada para avaliação de conteúdo dentro de um tópico, logo a reputação de cada usuário pode variar entre os diferentes tópicos em que esta escrito. 
+% aqui tem que fazer uma relação entre conteúdo->usuário, ou seja, a reputação do usuário depende somente da reputação dos seus posts
+O sistema define ama unidade de reputação, chamada de \emph{rep}, para controlar a quantidade de reputação que cada usuário tem em cada tópico.  Ela pode ser transferida entre usuários através de \textbf{\emph{likes}} e \textbf{\emph{dislikes}} nas publicações dos usuários.  Para facilitar a gerência da rede e evitar que usuários ganhem muita reputação e abusem dela, foram impostos diversos limites de como unidades de \emph{rep} podem ser usadas. 
 
-Por fim, \textbf{fóruns públicos} são tópicos em que todos os seus assinantes podem publicar mensagens não tendo necessariamente confiança entre os usuários (o contrário dos grupos privados). Dessa maneira é necessário um sistema de reputação próprio e customizado para atender as necessidades de segurança e validade de usuários e conteúdos. O sistema de reputação implementado pelo \FC para fóruns públicos é detalhado a seguir.
+% olhar os usos de rep e reps (plural)
 
-\subsection{Fóruns Públicos} \label{subsec: forunspub}
 
-O sistema de reputação criado tem o objetivo de evitar SPAM, notícias falsas e conteúdo ilícito além de incentivar usuários a serem membros ativos da rede. A reputação do \FC é voltada para avaliação de conteúdo, logo a reputação de cada usuário pode variar entre os diferentes tópicos em que esta escrito. 
+%\subsection{Fóruns Públicos} \label{subsec: forunspub}
 
-A unidade \emph{rep} foi definida para controlar a quantidade de reputação que cada usuários têm em cada tópico. Ela pode ser transferida entre usuários através de \textbf{\emph{likes}} e \textbf{\emph{dislikes}} nas publicações dos usuários. Para facilitar a gerência da rede e evitar que usuários ganhem muita reputação e abusem dela, foram impostos diversos limites de como unidades de \emph{rep} podem ser usadas. 
+\subsection{Exemplo}
+
+Precisa de um exemplo como está nos slides e vídeos.
+O exemplo precisa criar a intuição do sistema.
+Quando ele incentiva, quando ele desincentiva, etc.
+
+\subsection{Regras}
+
+Eu copiaria o que está no artigo do SBSeg.
+Esse texto corrido está muito complicado de entender porque as informações estão distantes uma das outras.
+
+\begin{comment}
 
 \subsubsection{Geração} \label{subsubsec:geracao}
 
@@ -109,9 +146,11 @@ Outra medida que visa incentivar usuários a avaliarem o conteúdo da rede com \
 
 Por fim, usuários sem reputação não podem propagar mensagens, ou seja, suas postagens ficam retidas e não são retransmitidas até que o usuário possa pagar a taxa de um \emph{rep}. Essa medida ajuda a manter a rede honesta e evita ataques de usuários maliciosos pois eles não conseguem mandar mensagens quando sua reputação e menor ou igual a zero.
 
-\subsection{Problemas} \label{subsec:fraq}
+\end{comment}
 
-Existem dois principais problemas no sistema de reputação do \FC:
+\subsection{Desafios} \label{subsec:fraq}
+
+Existem dois principais desafios no sistema de reputação do \FC:
 
 \begin{itemize}
     \item O espaço que cada cadeia utiliza
@@ -129,6 +168,21 @@ Ao longo dos anos vários sistemas de reputação foram propostos tanto para red
 Apesar de não ser aparente, os sistemas de reputação estão presentes na maior parte das aplicações dos dias hoje. O \emph{Facebook} apresenta o conceito de \emph{likes} onde usuários avaliam a postagem de outros usuários. \emph{Instagram}, \emph{Pinterest} e \emph{Twitter} também são exemplos de redes sociais que utilizam um sistema em que usuários avaliam uns aos outros. Os \emph{feedbacks} dos usuários ajudam com o crescimento ou a atenuação do escopo alcançado pelo publicador de conteúdo.  
 
 O \emph{Stack Overflow} é um outro exemplo de um sistema de reputação onde usuários que postam e respondem mais perguntas recebem uma maior reputação no sistema, recebendo assim benefícios.
+
+E aí? O que você conclui desses problemas? Não pode soltar isso assim!
+
+Sobre o espaço:
+    - ler sobre prunning
+    - falar sobre o foco em conteúdos mais textuais tipo chat/fórums
+    - levantar a possibilidade de postagens terem links para arquivos maiores, possivelmente para o IPFS que é projetado para isso
+    - ler como o scuttlebutt faz. ele tem exatamente a mesma característica do freechains
+
+Sobre 50+1:
+    - como seria esse ataque?
+    - início da comunidade dá o tom dela
+    - comunidades podem ser recriadas
+
+Tem outros problemas discutidos nos vídeos que você não abordou.
 
 \subsection{Sistemas de Reputação Centralizados} \label{subsec:SRCentra}
 
@@ -170,11 +224,15 @@ A seguir será analisado diversos sistemas de reputação propostos para redes d
 
 Um sistema de reputação extrínseco é um sistema de reputação externo ao sistema onde é utilizado, ou seja, a reputação é uma entidade separada do sistema.
 
+% não é isso ou não entendi a explicação
+
 O \emph{Bitcoin} é uma criptomoeda virtual descentralizada proposta por Nakamoto \cite{nakamoto2008peer}. Apesar de o \emph{Bitcoin} não apresentar um sistema de reputação próprio ele introduz a ideia de \emph{Proof of Work}. 
 
 \emph{Proof of Work} faz com que cada usuário precise trabalhar para conseguir guardar uma transação qualquer. Cada usuário precisa apresentar uma "prova de trabalho" para que seja possível compartilhar alguma conteúdo. Essa "prova de trabalha" acontece através de poder computacional, onde a máquina de cada usuário realiza operações matemáticas o mais rápido possível.
 
 Assim como o \FC os dados gerados são guardados em uma cadeia e podem ser verificados a qualquer momento. Isso possibilita que cada usuário possa averiguar as informações e o conteúdo recebido a qualquer momento. Apesar disso o \FC não apresenta outras semelhanças já que \emph{Proof of Work} foi gerado com o intuito de ajudar a guardar dados de criptomoedas e por isso precisam de um sistema mais eficiente apesar de ser muito mais demorado.
+
+- Proof of Stake, Proof of ??
 
 \subsubsection{Intrínseco Objetivo} \label{subsub:intobj}
 
